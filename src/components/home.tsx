@@ -1,6 +1,6 @@
 export function Home(){
     return(
-        <main>
+        <main className="bg-[#121212] ">
             
         </main>
     )

@@ -1,8 +1,13 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useState } from "react";
 
-export function Entradas() {
-  const [salario, setSalario] = useState(""); // bruto
-  const [valor, setValor] = useState(""); // formatado
+type EntradasProps = {
+  salario: string;               
+  setSalario: (v: string) => void; 
+};
+
+export function Entradas({salario, setSalario}:EntradasProps) {
+  const [valor, setValor] = useState("");
 
   function formatarNumero(v: string) {
     // remove tudo que não é número
@@ -27,7 +32,7 @@ export function Entradas() {
 
     // sem formatação
     const bruto = digitado.replace(/\D/g, "");
-    setSalario(bruto); // ← agora salario fica SEM formatação
+    setSalario(bruto); 
 
     // formatação
     const formatado = formatarNumero(digitado);
@@ -35,7 +40,7 @@ export function Entradas() {
   }
 
   return (
-    <div className="relative mt-10 ml-[20%] items-center flex">
+    <div className="relative mt-10 items-center flex">
       <span className="absolute left-3 top-1/2 -translate-y-1/2 text-black font-extrabold">
         R$
       </span>
@@ -44,9 +49,9 @@ export function Entradas() {
         type="text"
         value={valor}
         onChange={handleChange}
-        placeholder="Entradas"
+        placeholder="Entradas..."
         className="no-spinner rounded-[10px] p-2 border-2 bg-zinc-400 border-green-600 pl-10 items-center  "
-        maxLength={10}  
+        maxLength={10}
       />
     </div>
   );

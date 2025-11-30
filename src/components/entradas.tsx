@@ -9,33 +9,30 @@ type EntradasProps = {
 export function Entradas({salario, setSalario}:EntradasProps) {
   const [valor, setValor] = useState("");
 
-  function formatarNumero(v: string) {
-    // remove tudo que não é número
-    v = v.replace(/\D/g, "");
+function formatarNumero(v: string) {
+  if (!v) return "";
 
-    if (!v) return "";
+  // número com 2 casas
+  const n = (Number(v) / 100).toFixed(2);
 
-    // transforma em decimal
-    v = (Number(v) / 100).toFixed(2);
-
-    // troca ponto por vírgula
-    v = v.replace(".", ",");
-
-    // adiciona pontos de milhar
-    v = v.replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-
-    return v;
-  }
+  return n
+    .replace(".", ",")
+    .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+}
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const digitado = e.target.value;
 
     // sem formatação
-    const bruto = digitado.replace(/\D/g, "");
-    setSalario(bruto); 
+    let bruto = digitado.replace(/\D/g, "");
+    
+    if (bruto.length > 10) {
+    bruto = bruto.slice(0, 10); 
+  }
 
+  setSalario(bruto)
     // formatação
-    const formatado = formatarNumero(digitado);
+    const formatado = formatarNumero(bruto);
     setValor(formatado);
   }
 
@@ -51,7 +48,6 @@ export function Entradas({salario, setSalario}:EntradasProps) {
         onChange={handleChange}
         placeholder="Entradas..."
         className="no-spinner rounded-[10px] p-2 border-2 bg-zinc-400 border-green-600 pl-10 items-center  "
-        maxLength={10}
       />
     </div>
   );

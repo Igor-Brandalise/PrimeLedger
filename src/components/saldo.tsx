@@ -5,18 +5,22 @@ type SaldoProps = {
 };
 
 export function Saldo({ salario, saidas }: SaldoProps) {
-  const entrada = Number(salario);
-  const gastos = Number(saidas);
+  const entrada = Number(salario)/100;
+  const gastos = Number(saidas)/100;
 
- function formatarNumero(n: number) {
-  return n
-    .toFixed(2)                     // força 2 casas decimais
-    .replace(".", ",")              // troca ponto por vírgula
-    .replace(/\B(?=(\d{3})+(?!\d))/g, "."); // milhar
-}
+  function formatarNumero(n: number | string) {
+    const num = Number(n);
+
+    const seguro = Math.floor(num * 100) / 100; // remove lixo do float
+
+    return seguro
+      .toFixed(2)
+      .replace(".", ",")
+      .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  }
 
   // eslint-disable-next-line prefer-const
-  let numero = entrada - gastos
+  let numero = entrada - gastos;
   let saldo = formatarNumero(numero);
 
   return (
@@ -31,7 +35,6 @@ export function Saldo({ salario, saidas }: SaldoProps) {
         readOnly
         placeholder="Saldo..."
         className="no-spinner rounded-[10px] p-2 border-2 bg-zinc-400 border-green-600 pl-10 items-center  "
-        maxLength={10}
       />
     </div>
   );

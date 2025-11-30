@@ -5,7 +5,7 @@ import './index.css'
 
 function App() {
   return(
-    <div className='bg-[#121212] h-100'>
+    <div className='bg-[#121212] h-full'>
       <Header />
       <Home />
     </div>

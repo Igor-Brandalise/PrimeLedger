@@ -1,4 +1,5 @@
 /* eslint-disable prefer-const */
+
 type SaldoProps = {
   salario: string; // valor bruto
   saidas: string; // função que atualiza

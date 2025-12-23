@@ -2,8 +2,13 @@
 import { useState } from "react";
 
 export function Transacao() {
+  const data: Date = new Date();
+  const mes = data.getMonth()
+  const dia = data.getDate()
+  const dataFormatada = `${dia}/${mes+1}`
+
   const [despesas, setDespesas] = useState([
-    { id: 1, desc: "mercado", data: "12/09", valor: "10" },
+    { id: 1, desc: "mercado", data: dataFormatada, valor: "10" },
   ]);
 
   function handleChange(
@@ -22,7 +27,7 @@ export function Transacao() {
       <div className="text-white">
         <table className="m-10 ">
           <thead>
-            <tr className="flex gap-5">
+            <tr className="flex justify-between items-center">
               <th>Descrição</th>
               <th>Data</th>
               <th>Valor</th>
@@ -55,6 +60,7 @@ export function Transacao() {
                   <input
                     value={item.valor}
                     onChange={(e) => {
+                      
                       handleChange(item.id, "valor", e.target.value);
                     }}
                   />
@@ -68,8 +74,8 @@ export function Transacao() {
             const novoItem = {
               id: Date.now(),
               nome: "Nova Despesa",
-              valor: 0,
-              data: "",
+              valor: " ",
+              data: dataFormatada,
             };
             setDespesas([...despesas, novoItem]);
           }}

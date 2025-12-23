@@ -6,13 +6,15 @@ export function Transacao() {
     { id: 1, desc: "mercado", data: "12/09", valor: "10" },
   ]);
 
-  function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
-    const { name, value } = e.target;
-
-    setDespesas({
-      ...despesas, // mantém os valores antigos
-      [name]: value, // atualiza só o campo que mudou
-    });
+  function handleChange(
+    id: number,
+    campo: "desc" | "data" | "valor",
+    valor: string
+  ) {
+    const novaLista = despesas.map((item) =>
+      item.id === id ? { ...item, [campo]: valor } : item
+    );
+    setDespesas(novaLista);
   }
 
   return (

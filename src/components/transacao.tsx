@@ -45,7 +45,8 @@ export function Transacao() {
                     onChange={(e) => {
                       handleChange(item.id, "data", e.target.value);
                     }}
-                   className="border"/>
+                    className="border"
+                  />
                 </td>
 
                 <td>
@@ -75,9 +76,7 @@ export function Transacao() {
           Add line
         </button>
       </div>
-      <div>
-
-      </div>
+      <div></div>
     </div>
   );
 }

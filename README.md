@@ -1,73 +1,64 @@
-# React + TypeScript + Vite
+# 💰 PrimeLedger
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**PrimeLedger** é uma aplicação front-end para **controle e cálculo financeiro**, desenvolvida com foco em **lógica de negócio**, **organização de dados** e **visualização clara de informações financeiras**.
 
-Currently, two official plugins are available:
+> 🚧 Projeto em desenvolvimento
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## 🎯 Objetivo do Projeto
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+Desenvolver uma aplicação web para demonstrar:
+- modelagem de dados financeiros
+- controle de entradas e saídas
+- cálculos automáticos de valores
+- organização de informações em tabelas
+- interface clara e funcional
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+## 🚀 Funcionalidades
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Registro de entradas e saídas financeiras  
+- Visualização de dados em tabelas organizadas  
+- Cálculo automático de totais e saldo  
+- Atualização dinâmica dos valores exibidos  
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 🧩 Lógica e Organização
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+- Gerenciamento de estado para controle das movimentações  
+- Separação entre lógica de cálculo e apresentação dos dados  
+- Estrutura preparada para evolução contínua  
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+---
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## 🛠️ Tecnologias Utilizadas
+
+- React  
+- TypeScript  
+- Vite  
+- Tailwind CSS
+
+---
+
+## 📈 Status Atual
+
+- Funcionalidades principais implementadas  
+- Projeto em evolução contínua  
+
+---
+
+## 🔮 Próximas Melhorias
+
+- Persistência de dados (localStorage ou backend)  
+- Filtros por período  
+- Gráficos para visualização financeira  
+- Exportação de dados  
+
+---
+
+## 🔗 Links
+
+- **Repositório:** https://github.com/Igor-Brandalise/PrimeLedger  

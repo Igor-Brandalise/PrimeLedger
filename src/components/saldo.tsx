@@ -1,16 +1,30 @@
 /* eslint-disable prefer-const */
 
 type SaldoProps = {
-  salario: string; // valor bruto
-  saidas: string; // função que atualiza
+  salario: string;
+  saidas: {
+    id: number;
+    desc: string;
+    valor: string;
+    data: string;
+  }[];
 };
 
 export function Saldo({ salario, saidas }: SaldoProps) {
-  const entrada = Number(salario)/100;
-  const gastos = Number(saidas)/100;
+  const entrada = Number(salario) / 100;
 
+  
+  let valorGasto = 0 
+  saidas.forEach((item) => {
+    valorGasto += Number(item.valor) || 0
+  } )
+
+  let total = entrada - valorGasto;
+
+
+  
   function formatarNumero(n: number | string) {
-    const num = Number(n);
+   const num = Number(n);
 
     const seguro = Math.floor(num * 100) / 100; // remove lixo do float
 
@@ -20,9 +34,9 @@ export function Saldo({ salario, saidas }: SaldoProps) {
       .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
   }
 
-  // eslint-disable-next-line prefer-const
-  let numero = entrada - gastos;
-  let saldo = formatarNumero(numero);
+
+      let final = formatarNumero(total)
+
 
   return (
     <div className="relative mt-10 items-center flex">
@@ -32,7 +46,7 @@ export function Saldo({ salario, saidas }: SaldoProps) {
 
       <input
         type="text"
-        value={saldo}
+        value={final}
         readOnly
         placeholder="Saldo..."
         className="no-spinner rounded-[10px] p-2 border-2 bg-zinc-400 border-green-600 pl-10 items-center  "

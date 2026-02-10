@@ -1,3 +1,5 @@
+import { useState } from "react";
+
 type TabelaProps = {
   dadosTabela: (
     id: number,
@@ -5,26 +7,33 @@ type TabelaProps = {
     valor: string,
   ) => void;
 
-  despesa: { 
-    id: number,
-    desc: string,
-    valor: string,
-    data: string 
-  }[];
-
-  setDespesa:{
+  despesa: {
     id: number;
     desc: string;
     valor: string;
     data: string;
-  }[]
+  }[];
 
-  data:{
-    dataFormatada: string
-  }
+  setDespesa: {
+    id: number;
+    desc: string;
+    valor: string;
+    data: string;
+  }[];
+
+  data: {
+    dataFormatada: string;
+  };
 };
 
-export function Tabela({ dadosTabela, despesa, setDespesa, data }: TabelaProps) {
+export function Tabela({
+  dadosTabela,
+  despesa,
+  setDespesa,
+  data,
+}: TabelaProps) {
+  const [valor, setValor] = useState(0); // guarda só número
+
   return (
     <div>
       <div className="text-white">
@@ -45,8 +54,8 @@ export function Tabela({ dadosTabela, despesa, setDespesa, data }: TabelaProps) 
                     value={item.desc}
                     onChange={(e) => {
                       dadosTabela(item.id, "desc", e.target.value);
+                      formatarNumero(e.target.value);
                     }}
-                    
                   />
                 </td>
 
@@ -62,9 +71,19 @@ export function Tabela({ dadosTabela, despesa, setDespesa, data }: TabelaProps) 
 
                 <td>
                   <input
-                    value={item.valor}
+                    value={Number(item.valor).toLocaleString("pt-BR", {
+                      style: "currency",
+                      currency: "BRL",
+                    })}
                     onChange={(e) => {
-                      dadosTabela(item.id, "valor", e.target.value);
+                      const numeros = e.target.value.replace(/\D/g, "");
+                      const numeroReal = Number(numeros) / 100;
+
+                      const novaLista = despesa.map((d) =>
+                        d.id === item.id ? { ...d, valor: numeroReal } : d,
+                      );
+
+                      setDespesa(novaLista);
                     }}
                   />
                 </td>
@@ -78,7 +97,7 @@ export function Tabela({ dadosTabela, despesa, setDespesa, data }: TabelaProps) 
               id: Date.now(),
               desc: "",
               valor: " ",
-              data: data
+              data: data,
             };
             setDespesa([...despesa, novoItem]);
           }}

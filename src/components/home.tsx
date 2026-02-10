@@ -32,7 +32,7 @@ export function Home() {
 
   return (
     <main className="flex flex-col items-center justify-center gap-8">
-      <Entradas salario={salario} setSalario={setSalario} />
+      <Entradas setSalario={setSalario} />
 
       <Saldo salario={salario} saidas={despesas} />
 

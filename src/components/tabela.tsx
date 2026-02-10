@@ -54,7 +54,6 @@ export function Tabela({
                     value={item.desc}
                     onChange={(e) => {
                       dadosTabela(item.id, "desc", e.target.value);
-                      formatarNumero(e.target.value);
                     }}
                   />
                 </td>
@@ -62,6 +61,7 @@ export function Tabela({
                 <td>
                   <input
                     value={item.data}
+                    readOnly
                     onChange={(e) => {
                       dadosTabela(item.id, "data", e.target.value);
                     }}

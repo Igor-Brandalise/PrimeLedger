@@ -1,5 +1,7 @@
 /* eslint-disable prefer-const */
 
+import { Saidas } from "./saidas";
+
 type SaldoProps = {
   salario: string;
   saidas: {
@@ -13,18 +15,15 @@ type SaldoProps = {
 export function Saldo({ salario, saidas }: SaldoProps) {
   const entrada = Number(salario) / 100;
 
-  
-  let valorGasto = 0 
+  let valorGasto = 0;
   saidas.forEach((item) => {
-    valorGasto += Number(item.valor) || 0
-  } )
+    valorGasto += Number(item.valor) || 0;
+  });
 
   let total = entrada - valorGasto;
 
-
-  
   function formatarNumero(n: number | string) {
-   const num = Number(n);
+    const num = Number(n);
 
     const seguro = Math.floor(num * 100) / 100; // remove lixo do float
 
@@ -34,15 +33,15 @@ export function Saldo({ salario, saidas }: SaldoProps) {
       .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
   }
 
-
-      let final = formatarNumero(total)
-
+  let final = formatarNumero(total);
 
   return (
     <div className="relative mt-10 items-center flex">
       <span className="absolute left-3 top-1/2 -translate-y-1/2 text-black font-extrabold">
         R$
       </span>
+
+      <Saidas gasto={valorGasto} />
 
       <input
         type="text"

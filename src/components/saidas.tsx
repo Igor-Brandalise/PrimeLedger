@@ -4,7 +4,7 @@ type saidasProps = {
 
 export function Saidas({ gasto }: saidasProps) {
   return (
-    <div className="relative mt-10 items-center flex">
+    <div className="relative items-center mb-5">
       <span className="absolute left-3 top-1/2 -translate-y-1/2 text-black font-extrabold">
         R$
       </span>
@@ -13,7 +13,6 @@ export function Saidas({ gasto }: saidasProps) {
         type="text"
         readOnly
         value={gasto}
-        //onChange={}
         placeholder="Saídas"
         className="no-spinner rounded-[10px] p-2 border-2 bg-zinc-400 border-green-600 pl-10 items-center  "
       />

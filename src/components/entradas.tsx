@@ -2,42 +2,39 @@
 import { useState } from "react";
 
 type EntradasProps = {
-  salario: string;               
-  setSalario: (v: string) => void; 
+  setSalario: (v: string) => void;
 };
 
-export function Entradas({salario, setSalario}:EntradasProps) {
+export function Entradas({ setSalario }: EntradasProps) {
   const [valor, setValor] = useState("");
 
-function formatarNumero(v: string) {
-  if (!v) return "";
+  function formatarNumero(v: string) {
+    if (!v) return "";
 
-  // número com 2 casas
-  const n = (Number(v) / 100).toFixed(2);
+    // número com 2 casas
+    const n = (Number(v) / 100).toFixed(2);
 
-  return n
-    .replace(".", ",")
-    .replace(/\B(?=(\d{3})+(?!\d))/g, ".");
-}
+    return n.replace(".", ",").replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+  }
 
   function handleChange(e: React.ChangeEvent<HTMLInputElement>) {
     const digitado = e.target.value;
 
     // sem formatação
     let bruto = digitado.replace(/\D/g, "");
-    
-    if (bruto.length > 10) {
-    bruto = bruto.slice(0, 10); 
-  }
 
-  setSalario(bruto)
+    if (bruto.length > 10) {
+      bruto = bruto.slice(0, 10);
+    }
+
+    setSalario(bruto);
     // formatação
     const formatado = formatarNumero(bruto);
     setValor(formatado);
   }
 
   return (
-    <div className="relative mt-10 items-center flex">
+    <div className="relative items-center mb-5">
       <span className="absolute left-3 top-1/2 -translate-y-1/2 text-black font-extrabold">
         R$
       </span>

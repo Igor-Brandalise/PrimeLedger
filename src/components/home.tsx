@@ -31,8 +31,9 @@ export function Home() {
   }
 
   return (
-    <main className="flex flex-col items-center justify-center gap-8">
-      <Entradas salario={salario} setSalario={setSalario} />
+    <main className=" flex flex-col items-center mt-15">
+
+      <Entradas setSalario={setSalario} />
 
       <Saldo salario={salario} saidas={despesas} />
 
@@ -42,6 +43,7 @@ export function Home() {
         setDespesa={setDespesas}
         data={dataFormatada}
       />
+
     </main>
   );
 }

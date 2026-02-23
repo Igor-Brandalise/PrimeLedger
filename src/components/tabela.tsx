@@ -37,9 +37,9 @@ export function Tabela({
   return (
     <div>
       <div className="text-white">
-        <table className="m-10 ">
+        <table className="mt-10 ">
           <thead>
-            <tr className="flex justify-between items-center">
+            <tr className="">
               <th>Descrição</th>
               <th>Data</th>
               <th>Valor</th>
@@ -48,9 +48,10 @@ export function Tabela({
 
           <tbody>
             {despesa.map((item) => (
-              <tr key={item.id} className="flex gap-7 border">
+              <tr key={item.id} >
                 <td>
                   <input
+                  className="w-35 p-1 pl-2 border md:w-60"
                     value={item.desc}
                     onChange={(e) => {
                       dadosTabela(item.id, "desc", e.target.value);
@@ -65,12 +66,13 @@ export function Tabela({
                     onChange={(e) => {
                       dadosTabela(item.id, "data", e.target.value);
                     }}
-                    className="border"
+                    className="w-25 p-1 border text-center md:w-28"
                   />
                 </td>
 
                 <td>
                   <input
+                      className="w-35 p-1 pl-2 border md:w-50"
                     value={Number(item.valor).toLocaleString("pt-BR", {
                       style: "currency",
                       currency: "BRL",
@@ -101,7 +103,7 @@ export function Tabela({
             };
             setDespesa([...despesa, novoItem]);
           }}
-          className="border-white border p-2 rounded-[10px]"
+          className="border-white border p-2 rounded-[10px] mt-4"
         >
           Add line
         </button>

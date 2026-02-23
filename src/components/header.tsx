@@ -1,12 +1,12 @@
-import { Plus } from "lucide-react";
+
 
 export function Header() {
   return (
-    <header className="flex justify-between items-center p-10  h-18 w-full border-b-2 border-green-500">
+    <header className="m-auto pt-4.5  h-18 w-full border-b-2 border-green-500">
       <a href="/">
-        <h1 className="text-green-700 text-2xl font-extrabold">PrimeLedger</h1>
+        <h1 className="text-green-700 text-center text-3xl font-extrabold ">PrimeLedger</h1>
       </a>
-      <button className=""><Plus size={22} color="white"/></button>
+      
     </header>
   );
 }

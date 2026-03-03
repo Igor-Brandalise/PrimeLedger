@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { DeleteButton } from "./deleteButton";
 
 type TabelaProps = {
   dadosTabela: (
@@ -32,6 +33,7 @@ export function Tabela({
   setDespesa,
   data,
 }: TabelaProps) {
+  
   const [valor, setValor] = useState(0); // guarda só número
 
   return (
@@ -103,12 +105,12 @@ export function Tabela({
             };
             setDespesa([...despesa, novoItem]);
           }}
-          className="border-white border p-2 rounded-[10px] mt-4"
+          className="border-white border p-2 rounded-[10px] mt-4 "
         >
           Add line
         </button>
+        <DeleteButton despesas={despesa} setDespesas={setDespesa}/>
       </div>
-      <div></div>
     </div>
   );
 }

@@ -4,6 +4,7 @@ import { Entradas } from "./entradas";
 import { Saldo } from "./saldo";
 import { Tabela } from "./tabela";
 
+
 export function Home() {
   const [salario, setSalario] = useState("");
 
@@ -31,7 +32,7 @@ export function Home() {
   }
 
   return (
-    <main className=" flex flex-col items-center mt-15">
+    <main className="bg-[#121212] flex flex-col items-center mt-15">
 
       <Entradas setSalario={setSalario} />
 
@@ -43,6 +44,8 @@ export function Home() {
         setDespesa={setDespesas}
         data={dataFormatada}
       />
+
+      
 
     </main>
   );

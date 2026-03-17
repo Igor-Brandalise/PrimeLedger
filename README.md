@@ -38,8 +38,9 @@ Desenvolver uma aplicação web para demonstrar:
 
 - React  
 - TypeScript  
-- Vite  
+- Next.js
 - Tailwind CSS
+- Eslint
 
 ---
 
